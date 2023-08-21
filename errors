@@ -1,1 +1,7 @@
 Cannot insert an explicit value into a timestamp column. Use INSERT with a column list to exclude the timestamp column, or insert a DEFAULT into the timestamp column.
+
+Msg 8152, Level 16, State 30, Line 12
+String or binary data would be truncated.
+The statement has been terminated.
+
+Completion time: 2023-08-21T05:32:41.0823630-05:00
