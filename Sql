@@ -1,0 +1,132 @@
+-- Create Sign_UP table
+CREATE TABLE Sign_UP (
+  User_Id INT PRIMARY KEY,
+  Account_type VARCHAR,
+  User_name VARCHAR,
+  password VARCHAR,
+  created_at TIMESTAMP,
+  created_by VARCHAR
+);
+
+-- Insert dummy values into Sign_UP table
+INSERT INTO Sign_UP (User_Id, Account_type, User_name, password, created_at, created_by)
+VALUES
+  (1, 'Standard', 'user1', 'pass1', CURRENT_TIMESTAMP, 'admin'),
+  (2, 'Premium', 'user2', 'pass2', CURRENT_TIMESTAMP, 'admin'),
+  (3, 'Standard', 'user3', 'pass3', CURRENT_TIMESTAMP, 'admin'),
+  (4, 'Premium', 'user4', 'pass4', CURRENT_TIMESTAMP, 'admin'),
+  (5, 'Standard', 'user5', 'pass5', CURRENT_TIMESTAMP, 'admin');
+
+-- Create User_Details table
+CREATE TABLE User_Details (
+  User_Id_Details INT,
+  Role VARCHAR,
+  Name VARCHAR,
+  Aadhaar_No VARCHAR(12),
+  Age INT,
+  E_mail VARCHAR,
+  Contact VARCHAR(13),
+  Address VARCHAR,
+  Doctors_Certificate VARCHAR, -- Assuming 'document' is a string type
+  Baby_Age INT,
+  Medical_prescription VARCHAR, -- Assuming 'document' is a string type
+  created_at TIMESTAMP,
+  created_by VARCHAR,
+  updated_at TIMESTAMP,
+  updated_by VARCHAR,
+  PRIMARY KEY (User_Id_Details),
+  FOREIGN KEY (User_Id_Details) REFERENCES Sign_UP(User_Id),
+  FOREIGN KEY (Role) REFERENCES Sign_UP(Account_type)
+);
+
+-- Insert dummy values into User_Details table
+INSERT INTO User_Details (User_Id_Details, Role, Name, Aadhaar_No, Age, E_mail, Contact, Address, Doctors_Certificate, Baby_Age, Medical_prescription, created_at, created_by, updated_at, updated_by)
+VALUES
+  (1, 'Standard', 'User 1', '123456789012', 25, 'user1@example.com', '1234567890', 'Address 1', 'certificate1.pdf', 1, 'prescription1.pdf', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin'),
+  (2, 'Premium', 'User 2', '234567890123', 30, 'user2@example.com', '2345678901', 'Address 2', 'certificate2.pdf', 2, 'prescription2.pdf', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin'),
+  (3, 'Standard', 'User 3', '345678901234', 28, 'user3@example.com', '3456789012', 'Address 3', 'certificate3.pdf', 3, 'prescription3.pdf', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin'),
+  (4, 'Premium', 'User 4', '456789012345', 22, 'user4@example.com', '4567890123', 'Address 4', 'certificate4.pdf', 4, 'prescription4.pdf', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin'),
+  (5, 'Standard', 'User 5', '567890123456', 35, 'user5@example.com', '5678901234', 'Address 5', 'certificate5.pdf', 5, 'prescription5.pdf', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin');
+
+-- Create Ratings table
+CREATE TABLE Ratings (
+  Rating_Id INT PRIMARY KEY,
+  User_Id INT,
+  Ratings INT,
+  Feedback VARCHAR,
+  created_at TIMESTAMP,
+  created_by VARCHAR,
+  FOREIGN KEY (User_Id) REFERENCES Sign_UP(User_Id)
+);
+
+-- Insert dummy values into Ratings table
+INSERT INTO Ratings (Rating_Id, User_Id, Ratings, Feedback, created_at, created_by)
+VALUES
+  (1, 1, 4, 'Good service', CURRENT_TIMESTAMP, 'user1'),
+  (2, 2, 5, 'Excellent experience', CURRENT_TIMESTAMP, 'user2'),
+  (3, 3, 3, 'Average support', CURRENT_TIMESTAMP, 'user3'),
+  (4, 4, 2, 'Needs improvement', CURRENT_TIMESTAMP, 'user4'),
+  (5, 5, 4, 'Satisfied overall', CURRENT_TIMESTAMP, 'user5');
+
+-- Create Conversation table
+CREATE TABLE Conversation (
+  Conver_Id INT PRIMARY KEY,
+  Sender_Id INT,
+  Receiver_Id INT,
+  Message_content VARCHAR,
+  Created_at TIMESTAMP,
+  Created_by VARCHAR,
+  Updated_at TIMESTAMP,
+  Updated_by VARCHAR,
+  FOREIGN KEY (Sender_Id) REFERENCES Sign_UP(User_Id),
+  FOREIGN KEY (Receiver_Id) REFERENCES Sign_UP(User_Id)
+);
+
+-- Insert dummy values into Conversation table
+INSERT INTO Conversation (Conver_Id, Sender_Id, Receiver_Id, Message_content, Created_at, Created_by, Updated_at, Updated_by)
+VALUES
+  (1, 1, 2, 'Hello!', CURRENT_TIMESTAMP, 'user1', CURRENT_TIMESTAMP, 'user2'),
+  (2, 2, 3, 'Hi there!', CURRENT_TIMESTAMP, 'user2', CURRENT_TIMESTAMP, 'user3'),
+  (3, 3, 4, 'How can I help you?', CURRENT_TIMESTAMP, 'user3', CURRENT_TIMESTAMP, 'user4'),
+  (4, 4, 5, 'Any updates?', CURRENT_TIMESTAMP, 'user4', CURRENT_TIMESTAMP, 'user5'),
+  (5, 5, 1, 'Checking in!', CURRENT_TIMESTAMP, 'user5', CURRENT_TIMESTAMP, 'user1');
+
+-- Create Milk_Donation_Listings table
+CREATE TABLE Milk_Donation_Listings (
+  Don_List_Id INT PRIMARY KEY,
+  User_Id INT,
+  Availability VARCHAR,
+  created_by VARCHAR,
+  FOREIGN KEY (User_Id) REFERENCES Sign_UP(User_Id)
+);
+
+-- Insert dummy values into Milk_Donation_Listings table
+INSERT INTO Milk_Donation_Listings (Don_List_Id, User_Id, Availability, created_by)
+VALUES
+  (1, 1, 'Available', 'user1'),
+  (2, 2, 'Not available', 'user2'),
+  (3, 3, 'Available', 'user3'),
+  (4, 4, 'Not available', 'user4'),
+  (5, 5, 'Available', 'user5');
+
+-- Create Notification table
+CREATE TABLE Notification (
+  Notify_Id INT,
+  User_Id INT,
+  Message VARCHAR,
+  Created_at TIMESTAMP,
+  Created_by VARCHAR,
+  Updated_at TIMESTAMP,
+  Updated_by VARCHAR,
+  FOREIGN KEY (Notify_Id) REFERENCES Conversation(Conver_Id),
+  FOREIGN KEY (User_Id) REFERENCES Sign_UP(User_Id)
+);
+
+-- Insert dummy values into Notification table
+INSERT INTO Notification (Notify_Id, User_Id, Message, Created_at, Created_by, Updated_at, Updated_by)
+VALUES
+  (1, 1, 'New message received', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin'),
+  (2, 2, 'Message from user', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin'),
+  (3, 3, 'Important update', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin'),
+  (4, 4, 'Reminder: Appointment', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin'),
+  (5, 5, 'Notification content', CURRENT_TIMESTAMP, 'admin', CURRENT_TIMESTAMP, 'admin');
