@@ -1,0 +1,10 @@
+# Database configuration
+spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=YourDatabaseName
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.datasource.authentication=sqlserver
+spring.datasource.username=
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.SQLServer2012Dialect
+spring.jpa.hibernate.ddl-auto=update
+
+# Other Spring Boot configuration properties
