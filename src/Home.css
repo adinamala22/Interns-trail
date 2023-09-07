@@ -1,0 +1,108 @@
+* {
+  text-decoration: none;
+  background: linear-gradient(to bottom #f778be, #ece6dc);
+}
+.navbar {
+  list-style: none;
+  /* text-align: right; */
+  /* padding-right: 70px; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-nav {
+  margin-right: 3%;
+}
+
+.symbol {
+  /* height: 100px; */
+  height: 65px;
+  width: 180px;
+  /* padding-left: 20px; */
+  /* margin-left: ; */
+  padding-top: 8px;
+  /* float: left; */
+}
+li {
+  display: inline-block;
+  padding-top: 30px;
+}
+.active-link {
+  color: black;
+  margin-right: 50px;
+  font-size: 20px;
+}
+button {
+  border-radius: 10px;
+  font-size: 20px;
+  width: 150px;
+  padding: 10px;
+  border: none;
+  background-color: rgb(255, 252, 253);
+}
+.button1 {
+  color: black;
+}
+.right-nav .active-link:hover {
+  background: white;
+  border-radius: 10px;
+}
+.right-nav .button1:hover {
+  background: blue;
+  border-radius: 10px;
+}
+.title {
+  font-style: oblique;
+  /* float: left; */
+  /* padding-top: 10px; */
+  margin-top: -8%;
+  margin-left: 2px;
+  text-align: left;
+}
+.Heading1 {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  /* padding-top: 60px; */
+}
+.Paragraph {
+  font-style: oblique;
+  font-weight: 500;
+  font-size: 20px;
+  text-align: right;
+  padding-right: 70px;
+  padding-top: 20px;
+}
+button.Offer {
+  width: 200px;
+  background-color: rgb(236, 118, 181);
+  margin-right: 100px;
+  float: right;
+  margin-bottom: 53px;
+}
+.offer {
+  color: white;
+}
+.Offer .offer:hover {
+  background: black;
+  border-radius: 10px;
+}
+.login {
+  height: 300px;
+  width: 300px;
+  padding-left: 50px;
+  float: left;
+}
+/* body {
+  margin: 0;
+  background: linear-gradient(to bottom, #f778be, #ece6dc);
+} */
+
+.sample-div {
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  /* align-content: center; */
+  margin-left: 30px;
+}
