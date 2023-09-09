@@ -1,0 +1,79 @@
+.pic {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: 400px;
+}
+.head {
+  text-align: right;
+  margin-right: 400px;
+}
+.Rec-details {
+  text-align: right;
+  margin-right: 600px;
+  font-style: italic;
+}
+.Donated {
+  background-color: rgb(236, 118, 181);
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+}
+.Rating {
+  background-color: rgb(236, 118, 181);
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+}
+.r {
+  text-align: center;
+  padding-top: 11px;
+}
+.Don {
+  text-align: center;
+  padding-top: 12px;
+}
+.Details {
+  display: flex;
+  justify-content: space-between;
+}
+.Donar-record {
+  padding-left: 100px;
+}
+.Call {
+  border-radius: 60%;
+  height: 50px;
+  width: 50px;
+}
+.combo-button {
+  background-color: rgb(236, 118, 181);
+  margin-left: 10px;
+}
+.combo-button1 {
+  background-color: white;
+  margin-left: 10px;
+}
+.ph {
+  color: black;
+}
+.chat {
+  margin-top: 10px;
+  height: 40px;
+  width: 40px;
+}
+.report {
+  margin-top: 6px;
+  height: 40px;
+  width: 40px;
+}
+.Downbar {
+  display: flex;
+  justify-content: space-around;
+}
+.combo {
+  display: flex;
+  justify-content: space-between;
+}
